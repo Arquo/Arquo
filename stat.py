@@ -3,17 +3,6 @@ import numpy as np
 import matplotlib as plt
 from alpha_vantage.timeseries import TimeSeries
 
-api = "B9BL0WND53Q9UY0H"
-ts = TimeSeries(api, output_format="pandas")
-data, meta = ts.get_weekly("MSFT")
-year = 10
-
-close_data =  pd.DataFrame(data.iloc[ :52* year, 3])
-percent_change = list(np.log(close_data).diff().iloc[1:,0])
-#print(percent_change)
-annualized_volatility = np.std(percent_change)*np.sqrt(52)
-print(annualized_volatility)
-
 #print(type(annualized_volatility))
 #print("Annualized Volatility", annualized_volatility)
 
